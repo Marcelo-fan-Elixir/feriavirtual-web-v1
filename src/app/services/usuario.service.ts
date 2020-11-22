@@ -46,7 +46,7 @@ export class UsuarioService {
     return this.http.get(`${ this.url }/usuario.json`)
         .pipe(
           map( resp => this.crearArreglo(resp)),
-          delay(10)
+          delay(50)
         );
   }
 
