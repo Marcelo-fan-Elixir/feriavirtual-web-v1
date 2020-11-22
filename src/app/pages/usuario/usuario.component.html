@@ -1,0 +1,99 @@
+<h1>Usuario <small>Agregar Usuario</small> </h1>
+<hr>
+
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger" routerLink="/cliente">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+    </div>
+</div>
+
+
+
+<div class="row animated fadeIn faster">
+    <div class="col">
+
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+            <div class="form-group">
+                <label>Firebase ID</label>
+                <input type="text" class="form-control" placeholder="Firebase ID" [(ngModel)]="usuario.id" name="id" disabled="disabled">
+                <small class="form-text text-muted">Este campo es autogenerado</small>
+            </div>
+
+            <div class="form-group">
+                <label>Rut</label>
+                <input type="text" class="form-control" placeholder="Rut del usuario" [(ngModel)]="usuario.rut" name="rut" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre del usuario" [(ngModel)]="usuario.nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" class="form-control" placeholder="Teléfono del usuario" [(ngModel)]="usuario.telefono" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" class="form-control" placeholder="E-mail del usuario" [(ngModel)]="usuario.email" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Dirección</label>
+                <input type="text" class="form-control" placeholder="Dirección del usuario" [(ngModel)]="usuario.direccion" name="direccion" required>
+            </div>
+
+            <div class="form-group">
+                <label>Región</label>
+                <input type="text" class="form-control" placeholder="Región del usuario" [(ngModel)]="usuario.region" name="region" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de Usuario</label>
+                <select type="text" class="form-control" placeholder="Tipo de usuario" [(ngModel)]="usuario.tipoUsuario" name="tipoUsuario" required>
+                <option>Cliente</option>
+                <option>Productor</option>
+                <option>Transportista</option>
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label>Nacionalidad</label>
+                <br>
+
+                <button *ngIf="usuario.nacionalidad" (click)="usuario.nacionalidad = false" class="btn btn-outline-success w-50" type="button">
+                  <i class="fa fa-smile-wink"></i>
+                  Chilena
+                </button>
+
+                <button *ngIf="!usuario.nacionalidad" (click)="usuario.nacionalidad = true" class="btn btn-outline-danger w-50" type="button">
+                  <i class="fa fa-dizzy"></i>
+                  Extrangero
+                </button>
+
+            </div>
+
+
+
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25">
+                  <i class="fa fa-save"></i>
+                  Guardar
+                </button>
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>
