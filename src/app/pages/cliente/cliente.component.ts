@@ -30,7 +30,7 @@ export class ClienteComponent implements OnInit {
 
     Swal.fire({
       title: '¿Está seguro?',
-      text: `Está seguro que desea borrar a ${ usuario.nombre }`,
+      text: `Está seguro que desea borrar a ${ usuario.nombreUsuario }`,
       icon: 'question',
       showConfirmButton: true,
       showCancelButton: true

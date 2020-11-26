@@ -1,16 +1,15 @@
 export class UsuarioModel {
-    id: string;
-    rut: string;
-    nombre: string;
-    telefono: number;
-    email: string;
-    direccion: string;
-    region: string;
-    pais: string;
-    tipoUsuario: string;
-    nacionalidad: boolean;
+    id: number;
+    rutUsuario: string;
+    nombreUsuario: string;
+    telefonoUsuario: number;
+    emailUsuario: string;
+    direccionUsuario: string;
+    region: number;
+    pais: number;
+    tipoUsuario: number;
 
     constructor() {
-        this.nacionalidad = true;
+        
     }
 }

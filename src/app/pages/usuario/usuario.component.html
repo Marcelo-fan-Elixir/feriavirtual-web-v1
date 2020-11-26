@@ -50,16 +50,20 @@
             </div>
 
             <div class="form-group">
-                <label>Región</label>
-                <input type="text" class="form-control" placeholder="Región del usuario" [(ngModel)]="usuario.region" name="region" required>
+                <label>Pais</label>
+                <select [(ngModel)]="usuario.pais" class="form-control" name="pais" required>
+                    <option value="{{pais.idPais}}" *ngFor="let pais of banana"> {{pais.nombrePais}} </option>
+                </select>
             </div>
+
+            
 
             <div class="form-group">
                 <label>Tipo de Usuario</label>
-                <select type="text" class="form-control" placeholder="Tipo de usuario" [(ngModel)]="usuario.tipoUsuario" name="tipoUsuario" required>
-                <option>Cliente</option>
-                <option>Productor</option>
-                <option>Transportista</option>
+                <select type="number" class="form-control" placeholder="Tipo de usuario" [(ngModel)]="usuario.tipoUsuario" name="tipoUsuario" required>
+                <option value="1">AOskdko</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
                 </select>
             </div>
 

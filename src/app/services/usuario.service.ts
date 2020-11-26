@@ -9,12 +9,12 @@ import { map, delay } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-  private url = 'https://login-feria-virtual.firebaseio.com';
+  private url = 'http://localhost:8081/v1/usuario';
 
   constructor( private http: HttpClient ) { }
 
   crearUsuario( usuario: UsuarioModel ) {
-    return this.http.post(`${ this.url }/usuario.json`, usuario )
+    return this.http.post(`${ this.url }`, usuario )
         .pipe(
           map( (resp: any) => {
             usuario.id = resp.name;
@@ -34,8 +34,8 @@ export class UsuarioService {
     return this.http.put(`${ this.url }/ususario/${ usuario.id }.json`, usuarioTemp);
   }
 
-  borrarUsuario( id: string ) {
-    return this.http.delete( `${ this.url }/usuario/${ id }.json` );
+  borrarUsuario( id: number ) {
+    return this.http.delete( `${ this.url }/${ id }` );
   }
 
   getUsuarios( id: string ) {
@@ -43,7 +43,7 @@ export class UsuarioService {
   }
 
   getUsuario() {
-    return this.http.get(`${ this.url }/usuario.json`)
+    return this.http.get(`${ this.url }`)
         .pipe(
           map( resp => this.crearArreglo(resp)),
           delay(50)

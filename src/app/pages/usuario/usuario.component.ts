@@ -7,7 +7,9 @@ import { UsuarioModel } from '../models/usuario.model';
 
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
-
+import { HttpBackend } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -17,21 +19,41 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioComponent implements OnInit {
 
+  private urlPais = 'http://localhost:8081/v1/pais';
+  private pais;
+  private banana;
   usuario: UsuarioModel = new UsuarioModel();
 
   constructor( private usuarioService: UsuarioService,
-               private route: ActivatedRoute ) { }
+               private route: ActivatedRoute,
+               private http: HttpClient ) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
     if ( id !== 'nuevo' ) {
       this.usuarioService.getUsuarios( id )
           .subscribe( (resp: UsuarioModel) => {
             this.usuario = resp;
-            this.usuario.id = id;
+            this.usuario.id = 1;
           });
     }
+    this.listPais();
+    console.log(this.banana)
+  }
+
+  getPais(){
+    return this.http.get(this.urlPais).pipe(map((res: Response) => this.pais = res));
+  }
+
+  listPais(){
+    this.getPais().subscribe( res =>{ 
+      this.banana = res;
+      console.log(this.banana);
+    });
+  }
+
+  getId(id){
+    console.log(id);
   }
 
   guardar( form: NgForm ) {
@@ -59,7 +81,7 @@ export class UsuarioComponent implements OnInit {
 
     peticion.subscribe( resp => {
       Swal.fire({
-        title: this.usuario.nombre,
+        title: this.usuario.nombreUsuario,
         text: 'Se actualizó correctamente!',
         icon: 'success'
       });

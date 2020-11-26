@@ -23,26 +23,21 @@
                 <th scope="col">Teléfono</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Dirección</th>
-                <th scope="col">Región</th>
+                <th scope="col">Pais</th>
                 <th scope="col">Tipo de usuario</th>
-                <th scope="col">Nacional?</th>
-                <th scope="col">Tools</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let usuario of cliente; let i = index">
                 <th scope="row">{{ i + 1 }}</th>
-                <td>{{ usuario.rut }}</td>
-                <td>{{ usuario.nombre }}</td>
-                <td>{{ usuario.telefono }}</td>
-                <td>{{ usuario.email }}</td>
-                <td>{{ usuario.direccion }}</td>
-                <td>{{ usuario.region }}</td>
-                <td>{{ usuario.tipoUsuario }}</td>
-                <td>
-                    <label *ngIf="usuario.nacionalidad" class="badge badge-success">Nacional</label>
-                    <label *ngIf="!usuario.nacionalidad" class="badge badge-danger">Internacional</label>
-                </td>
+                <td>{{ usuario.rutUsuario }}</td>
+                <td>{{ usuario.nombreUsuario }}</td>
+                <td>{{ usuario.telefonoUsuario }}</td>
+                <td>{{ usuario.emailUsuario }}</td>
+                <td>{{ usuario.direccionUsuario }}</td>
+                <td>{{ usuario.comuna.provincia.region.pai.nombrePais }}</td>
+                <td>{{ usuario.tipoUsuario.nombreTipoUsuario }}</td>
                 <td>
                     <button class="btn btn-info mr-1" [routerLink]="[ '/usuario', usuario.id ]">                            
                         <i class="fa fa-pencil"></i>
